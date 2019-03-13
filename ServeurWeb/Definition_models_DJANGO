@@ -1,0 +1,45 @@
+class Potager(models.Model):
+    nombre_carres = models.IntegerField(verbose_name="Nombre de carres")
+    nombre_emplacements_par_carres = models.IntegerField(default=9,verbose_name="Emplacements par carre")
+    annee_creation = models.DateTimeField(default='2019',verbose_name="Annee de production")
+    Actif = models.BooleanField()
+
+
+class Carres(models.Model):
+    potager = models.ForeignKey(Potager, on_delete=models.CASCADE)
+    numero = models.IntegerField()
+
+
+class Emplacements(models.Model):
+    carres= models.ForeignKey(Carres, on_delete=models.CASCADE)
+    nom = models.IntegerField()
+
+
+class Familles(models.Model):
+    nom = models.CharField(max_length=100)
+    class-couleur = models.CharField(max_length=30)
+
+class Legumes-referentiel(models.Model):
+    famille = models.ForeignKey(Familles, on_delete=models.CASCADE)
+    nom = models.CharField(max_length=50)
+    periode_semis = models.DateTimeField(verbose_name="Semis en")
+    periode_plantation = models.DateTimeField(verbose_name="Plantation en")
+    date_recolte =  models.DateTimeField(verbose_name="Recolter a partir de")
+    picture-link = models.CharField(max_length=300, verbose_name="Url de l'image")
+
+
+class Legumes(models.Model):
+    emplacement= models.ForeignKey(Emplacements, on_delete=models.CASCADE)
+    famille = models.ForeignKey(Familles, on_delete=models.CASCADE)
+    nom = models.CharField(max_length=100)
+    variete = models.CharField(max_length=200)
+    date_semis = models.DateTimeField(verbose_name="Seme le")
+    date_plantation = models.DateTimeField(verbose_name="Plante le")
+    
+
+class Legume-suivi(models.Model):
+    entry-date    /* date ajout du suivi */
+    legume = models.ForeignKey(Legumes, on_delete=models.CASCADE)
+    status = models.CharField(max_length=100)
+
+

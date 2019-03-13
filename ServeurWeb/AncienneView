@@ -1,0 +1,55 @@
+from django.shortcuts import render
+import os 
+
+# Create your views here.
+import re
+from datetime import datetime
+from django.http import HttpResponse
+from .models import Post
+
+def home(request):
+    return render(request, "potager/home.html")
+
+def about(request):
+    return render(request, "potager/about.html")
+
+def contact(request):
+    return render(request, "potager/contact.html")
+
+def potager_there(request, name):
+    now = datetime.now()
+    formatted_now = now.strftime("%A, %d %B, %Y at %X")
+    staticurl = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'static/')
+    return render(
+        request,
+        'potager/test.html',
+        {
+            'name' : name,
+            'staticpath' : staticurl
+        }
+    )
+
+def post_list(request):
+    now = datetime.now()
+    formatted_now = now.strftime("%A, %d %B, %Y at %X")
+    mesposts = Post.objects.all()
+    return render(
+        request,
+        'potager/test2.html',
+        {
+            'posts': mesposts
+            
+        }
+    )
+
+def post_details(request,id):
+    
+    mon_post = Post.objects.get(pk=id)
+    return render(
+        request,
+        'potager/test3.html',
+        {
+            'post': mon_post
+            
+        }
+    )
