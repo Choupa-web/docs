@@ -7,9 +7,11 @@ git : revoir signification de toutes les commandes
 checkout, pull, push 
 
 08/03/19 To do next:
-- schema des tables + relations
 - creer les modeles dans django
 - ajout gestion des modeles dans l'admin
+
+14/03/19:
+- champs annee creation : configurer le format par defaut
 
 
  
