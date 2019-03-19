@@ -9,5 +9,8 @@ checkout, pull, push
 14/03/19:
 - champs annee creation : configurer le format par defaut
 
+19/03/19:
+- comment ? lors de la creation d'un potager les carres et les emplacements sont automatiquement crees.
+
 
  
